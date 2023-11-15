@@ -1,3 +1,5 @@
+package dsa;
+
 public class Primitivies {
   public static void main(String[] args) {
     int rollno = 64;

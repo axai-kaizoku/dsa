@@ -1,14 +1,24 @@
-const isPrime = (n) => {
-	if (n === 1) return true;
+// print all the 3 digit armstrong numbers
 
-	let i = 2;
-	while (i * i <= n) {
-		if (n % i === 0) {
-			return false;
-		}
-		i++;
+let a = 153;
+
+function isArmstrong(n) {
+	let original = n;
+	let sum = 0;
+	while (n > 0) {
+		let rem = n % 10;
+		n = Math.floor(n / 10);
+		sum += rem * rem * rem;
 	}
-	return i * i > n;
-};
+	return sum === original;
+}
 
-console.log(isPrime(11));
+// Print all the armstrong numbers upto 1000
+
+for (let int = 1; int < 100000; int++) {
+	if (isArmstrong(int)) {
+		console.log(int);
+	}
+}
+
+// console.log(isArmstrong(a));

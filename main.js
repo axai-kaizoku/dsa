@@ -1,16 +1,14 @@
-let arr = [1, 2, 3, 4, 5, 6];
+const isPrime = (n) => {
+	if (n === 1) return true;
 
-let x = 5;
-let a = 0;
-
-for (i = 0; i < arr.length - 1; i++) {
-	for (j = i + 1; j < arr.length; j++) {
-		if (arr[i] + arr[j] == x) {
-			a++;
-			console.log(`${arr[i]}, ${arr[j]}    =>  true`);
-		} else {
-			console.log(`${arr[i]}, ${arr[j]}    =>  false `);
+	let i = 2;
+	while (i * i <= n) {
+		if (n % i === 0) {
+			return false;
 		}
+		i++;
 	}
-}
-console.log(a);
+	return i * i > n;
+};
+
+console.log(isPrime(11));

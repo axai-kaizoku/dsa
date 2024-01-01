@@ -1,6 +1,8 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -8,51 +10,68 @@ public class EmployeeSalary {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter gender: ");
+        System.out.print("Enter gender: ");
         char gender = in.next().charAt(1);
-
+        int[] days = new int[36];
+        int[] OTMoney = new int[36];
+        int totalSalary  =  0;
+        int totalOTMoney = 0;
         switch (gender){
             case 'M':
 //                getOTAmt2();
 
-                System.out.println("Enter the salary: ");
+                System.out.print("Enter the salary: ");
                 int salary =  in.nextInt();
-//
 
 
-                System.out.print("Enter the time in (HH:mm): ");
-                String inTimeStr =  in.next();
-//
+                for (int i = 1; i < days.length+1; i++) {
+                    System.out.print("Enter the time in (HH:mm) of day " +i+ ": ");
+                    String inTimeStr =  in.next();
 
-                System.out.print("Enter the time out (HH:mm): ");
-                String outTimeStr = in.next();
-//
+                    System.out.print("Enter the time out (HH:mm) of day " +i+ ": ");
+                    String outTimeStr = in.next();
 
 
-                System.out.println("only ot money "+getOTMoney(11,salary,inTimeStr,outTimeStr));
-                System.out.println("earned per day " +getMoneyPerDay(11, salary, inTimeStr,outTimeStr));
-
+                    System.out.println("only OT money "+getOTMoney(11,salary,inTimeStr,outTimeStr));
+                    System.out.println("earned per day " +getMoneyPerDay(11, salary, inTimeStr,outTimeStr));
+                    days[i] = (int) getMoneyPerDay(11,salary,inTimeStr,outTimeStr);
+                    OTMoney[i] = (int) getOTMoney(11,salary,inTimeStr,outTimeStr);
+//                    System.out.println("Total Days"+ Arrays.toString(days));
+                    totalSalary += days[i];
+                    totalOTMoney += OTMoney[i];
+                }
+                System.out.println("Total Days"+ Arrays.toString(days));
+                System.out.println("Total salary of the bro: "+totalSalary);
+                System.out.println("Total OT amount earned: "+totalOTMoney);
                 break;
             case 'F':
 
-              System.out.println("Enter the salary: ");
+                System.out.print("Enter the salary: ");
                 int salary1 =  in.nextInt();
-//
 
 
-                System.out.print("Enter the time in (HH:mm): ");
-                String inTimeStr1 =  in.next();
-//
+                for (int i = 0; i < days.length; i++) {
+                    System.out.print("Enter the time in (HH:mm) of day " +i+ ": ");
+                    String inTimeStr =  in.next();
 
-                System.out.print("Enter the time out (HH:mm): ");
-                String outTimeStr1 = in.next();
-
-                System.out.println("only ot money "+getOTMoney(10,salary1,inTimeStr1,outTimeStr1));
-                System.out.println("earned per day " +getMoneyPerDay(10,salary1,inTimeStr1,outTimeStr1));
+                    System.out.print("Enter the time out (HH:mm) of day " +i+ ": ");
+                    String outTimeStr = in.next();
 
 
+                    System.out.println("only OT money "+getOTMoney(10,salary1,inTimeStr,outTimeStr));
+                    System.out.println("earned per day " +getMoneyPerDay(10, salary1, inTimeStr,outTimeStr));
+                    days[i] = (int) getMoneyPerDay(10,salary1,inTimeStr,outTimeStr);
+                    OTMoney[i] = (int) getOTMoney(10,salary1,inTimeStr,outTimeStr);
+//                    System.out.println("Total Days"+ Arrays.toString(days));
+                    totalSalary += days[i];
+                    totalOTMoney += OTMoney[i];
+                }
+                System.out.println("Total Days"+ Arrays.toString(days));
+                System.out.println("Total salary of the bro: "+totalSalary);
+                System.out.println("Total OT amount earned: "+totalOTMoney);
                 break;
             default:
+                System.out.println("Only male and female");
                 break;
         }
     }
@@ -81,7 +100,7 @@ public class EmployeeSalary {
         float earnedAmt = 0;
         int constDay = salary / 30;
 //        System.out.println(constDay);
-        if (inTimeStr == "0:0"){
+        if (Objects.equals(inTimeStr, "0:0")){
             earnedAmt = 0;
         } else {
             try {
@@ -124,12 +143,12 @@ public class EmployeeSalary {
 
 
     static float getOTMoney(int workingHours,int salary, String inTimeStr, String outTimeStr){
-//        Scanner in = new Scanner(System.in);
 
-//        int salary = in.nextInt();
         long day1;
         float earnedAmt = 0;
-
+        if (Objects.equals(inTimeStr, "0:0")){
+            earnedAmt = 0;
+        } else {
             try {
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 
@@ -156,7 +175,7 @@ public class EmployeeSalary {
             } catch (ParseException e) {
                 System.out.println("Invalid time format. Please enter time in HH:mm format.");
             }
-
+        }
 //        System.out.print("Enter the time in (HH:mm): ");
 //        String inTimeStr = in.next();
 

@@ -50,7 +50,7 @@ public class EmployeeSalary {
                 int salary1 =  in.nextInt();
 
 
-                for (int i = 0; i < days.length; i++) {
+                for (int i = 1; i < days.length+1; i++) {
                     System.out.print("Enter the time in (HH:mm) of day " +i+ ": ");
                     String inTimeStr =  in.next();
 

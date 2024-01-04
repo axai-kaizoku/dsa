@@ -4,20 +4,20 @@ public class SearchInMountain {
 //        System.out.println(peaKIndex(arr));
 //        System.out.println(OrderAgnosticBS(arr, 4, 0, arr.length - 1));
 
-        System.out.println(search(arr, 3));
+        System.out.println(search(arr, 5));
     }
         // find in mountain array - leetcode;
 
     static int search(int[] arr, int target){
         int peak = peaKIndex(arr);
-        int firstTry = OrderAgnosticBS(arr, target, 0, peak);
+        int firstTry = orderAgnosticBS(arr, target, 0, peak);
         if (firstTry != -1){
             return firstTry;
         }
-        return OrderAgnosticBS(arr, target, peak+1, arr.length - 1);
+        return orderAgnosticBS(arr, target, peak+1, arr.length - 1);
     }
 
-    static int OrderAgnosticBS(int[] arr, int target, int start, int end){
+    static int orderAgnosticBS(int[] arr, int target, int start, int end){
         while( start <= end){
             int mid = start + (end - start) / 2;
             if (arr[mid] == target){

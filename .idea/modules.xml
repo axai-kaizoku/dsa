@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BinarySearchIn2D/BinarySearchIn2D.iml" filepath="$PROJECT_DIR$/BinarySearchIn2D/BinarySearchIn2D.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BinarySearchQuestions/BinarySearchQuestions.iml" filepath="$PROJECT_DIR$/BinarySearchQuestions/BinarySearchQuestions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DSA.iml" filepath="$PROJECT_DIR$/DSA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practice/Practice.iml" filepath="$PROJECT_DIR$/Practice/Practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays/arrays.iml" filepath="$PROJECT_DIR$/arrays/arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/binarySearchAlgorithm/binarySearchAlgorithm.iml" filepath="$PROJECT_DIR$/binarySearchAlgorithm/binarySearchAlgorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/linearSearchAlgorithm/linearSearchAlgorithm.iml" filepath="$PROJECT_DIR$/linearSearchAlgorithm/linearSearchAlgorithm.iml" />
+    </modules>
+  </component>
+</project>

@@ -17,8 +17,17 @@ function isArmstrong(n) {
 
 for (let int = 1; int < 100000; int++) {
 	if (isArmstrong(int)) {
-		console.log(int);
+		// console.log(int);
 	}
 }
 
 // console.log(isArmstrong(a));
+const arr = [];
+
+for (let index = 1; index <= 18; index++) {
+	arr.push(index);
+}
+
+arr.sort((a, b) => Math.random() - 0.5);
+
+console.log(arr[0]);

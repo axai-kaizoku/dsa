@@ -3,10 +3,40 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {5,4,3,2,1};
+        int[] arr = {9,8,7,5,3,4,6,2,1,2};
 //        bubble(arr);
-        selection(arr);
+//        selection(arr);
+//        insertion(arr);
+        cycle(arr);
         System.out.println(Arrays.toString(arr));
+    }
+
+
+
+
+    static void cycle(int[] arr){
+        int i = 0;
+        while(i < arr.length){
+            int correctIndex = arr[i] - 1;
+            if (arr[i] != arr[correctIndex]){
+                swap(arr,i,correctIndex);
+            } else{
+                i++;
+            }
+        }
+    }
+
+    static void insertion(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i+1; j > 0; j--) {
+                if (arr[j] < arr[j-1]){
+                    swap(arr,j,j-1);
+                } else {
+                    break;
+                }
+            }
+
+        }
     }
 
     static void bubble(int[] arr){
@@ -32,7 +62,6 @@ public class Main {
         }
     }
 
-
     static void selection(int[] arr){
         for (int i = 0; i < arr.length; i++) {
             // find the max item in the remaining array and swap with correct index
@@ -41,6 +70,8 @@ public class Main {
             swap(arr,maxIndex,last);
         }
     }
+
+
 
 
     static void swap(int[] arr,int first, int second){

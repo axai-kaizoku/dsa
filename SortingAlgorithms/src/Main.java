@@ -1,18 +1,61 @@
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {9,8,7,5,3,4,6,2,1,2};
+        int[] arr = {1,4,5,2,3,3,7};
 //        bubble(arr);
 //        selection(arr);
 //        insertion(arr);
-        cycle(arr);
+//        cycle(arr);
+//        System.out.println(missingNumber(arr));
+        findAllMissing(arr);
         System.out.println(Arrays.toString(arr));
     }
 
 
 
+    static void findAllMissing(int[] arr){
+        int i = 1;
+        while(i < arr.length){
+            int current = arr[i] - 1;
+            if (arr[i] != arr[current]){
+                swap(arr,i,current);
+            } else{
+                i++;
+            }
+        }
+
+
+
+        for (int index = 0; index < arr.length; index++) {
+            if (arr[index] != index+1){
+                System.out.println(index+1);
+            }
+        }
+
+
+    }
+
+    static int missingNumber(int[] arr){
+        int i = 0;
+        while(i < arr.length){
+            int current = arr[i];
+            if (arr[i] < arr.length && arr[i] != arr[current]){
+                swap(arr,i,current);
+            } else {
+                i++;
+            }
+        }
+        for (int index = 0; index < arr.length; index++) {
+            if (arr[index] != index){
+                return index;
+            }
+        }
+
+        return arr.length;
+    }
 
     static void cycle(int[] arr){
         int i = 0;

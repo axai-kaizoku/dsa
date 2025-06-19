@@ -1,6 +1,6 @@
 public class PatternsMain {
     public static void main(String[] args) {
-        pattern6Sanjana(6);
+        pattern4(6);
     }
 
 
@@ -168,6 +168,24 @@ public class PatternsMain {
     }
 
     static void pattern8(int n){
+        int maxRows = (n%2==0) ? n+4 : n+5;
+        for (int row = 1; row <= maxRows; row++) {
+            if (row % 2 != 0) {  // Check if the row number is odd
+                // Print leading spaces
+                int space = (maxRows - row)/2;
+                for (int col = 0; col < space; col++) {
+                    System.out.print(" ");
+                }
+                for (int col = 0; col < row; col++) {
+                    System.out.print("*");
+                }
+
+                // Move to the next line after each row
+                System.out.println();
+            }
+        }
+    }
+    static void pattern82(int n){
         int maxRows = (n%2==0) ? n+4 : n+5;
         for (int row = 1; row <= maxRows; row++) {
             if (row % 2 != 0) {  // Check if the row number is odd

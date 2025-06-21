@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hashing</title>
+</head>
+<body>
+    hashing
+    <script>
+        // get the count of given target array number in arr;
+        const arr = [2,3,4,5,8,3];
+        const target = [1,2,3,4];
+<!--        console.log("input array:", arr);-->
+<!--        console.log("target array:", target);-->
+        const hash = {};
+        for (let i = 0; i < 14; i++){
+            hash[i] = 0;
+        }
+        for (let i = 0; i < arr.length; i++){
+            hash[arr[i]]++;
+        }
+<!--        console.log(hash);-->
+        const res = [];
+        for (let i = 0;i < target.length; i++){
+            res[i] = hash[target[i]];
+        }
+<!--        console.log('response', res);-->
+
+        ///////////////////////////////////
+<!--GFG-->
+
+        // User function Template for javascript
+
+/**
+ * @param {number[]} arr
+ * @returns {number[]}
+ */
+<!--Input: arr[] = [2, 3, 2, 3, 5]-->
+<!--Output: [0, 2, 2, 0, 1]-->
+<!--Explanation: We have: 1 occurring 0 times, 2 occurring 2 times, 3 occurring 2 times, 4 occurring 0 times, and 5 occurring 1 time.-->
+class Solution {
+    // Function to count the frequency of all elements from 1 to N in the array.
+    frequencyCount(arr) {
+        // code here
+        const hash = {};
+        for (let i = 0; i < arr.length+1; i++){
+            hash[i] = 0;
+        }
+        // console.log(hash)
+        for (let i = 0; i < arr.length; i++){
+            hash[arr[i]]++
+        }
+        // console.log(hash)
+        const res = [];
+        for (let i = 0; i < arr.length; i++){
+            res[i] = hash[i+1];
+        }
+        // console.log(res)
+        return res;
+    }
+}
+
+        /////////////////////////////////////
+<!--        Highest Occurring Element in an Array-->
+
+
+        class Solution {
+    mostFrequentElement(nums) {
+        const hash = {};
+        for (let i = 0; i < nums.length; i++){
+            hash[nums[i]] = 0;
+        }
+        for (let i = 0; i < nums.length; i++){
+            hash[nums[i]]++;
+        }
+
+        let maxFreq = 0;
+        let maxKey = null;
+        for (let key in hash) {
+            const numKey = Number(key);
+            if (
+                hash[key] > maxFreq ||
+                (hash[key] === maxFreq && numKey < maxKey)
+            ) {
+                maxFreq = hash[key];
+                maxKey = numKey;
+            }
+        }
+        // console.log(maxFreq)
+        // console.log(maxKey)
+        return maxKey;
+    }
+}
+
+        ////////////////////////////////
+<!--        GFG q: Top K Frequent in Array-->
+        class Solution {
+    /**
+     * @param {Number[]} arr
+     * @param {Number} k
+     * @returns {Number}
+     */
+    topKFrequent(arr, k) {
+        // your code here
+        const hash = {};
+        for (let i = 0; i < arr.length; i++){
+            hash[arr[i]] = (hash[arr[i]] || 0) + 1;
+        }
+
+         console.log(hash);
+        const res = [];
+        let maxFreq = 0;
+        let maxKey = null;
+        for (let key in hash){
+            const numKey = Number(key)
+            if (hash[key] > maxFreq || (hash[key] === maxFreq && numKey < maxKey)){
+                // res[i] = hash[arr[i]]
+                maxFreq = hash[key]
+                maxKey = numKey
+            }
+        }
+
+        console.log(maxFreq);
+        console.log(maxKey);
+
+        return res;
+    }
+}
+<!--Working one-->
+        function topKFrequent(arr, k) {
+    const freqMap = {};
+
+    // Step 1: Count frequencies
+    for (let i = 0; i < arr.length; i++) {
+        const num = arr[i];
+        if (freqMap[num] === undefined) {
+            freqMap[num] = 1;
+        } else {
+            freqMap[num]++;
+        }
+    }
+
+    // Step 2: Convert freqMap to array of [num, freq]
+    const freqArr = [];
+    for (let key in freqMap) {
+        freqArr.push([parseInt(key), freqMap[key]]);
+    }
+
+    // Step 3: Custom sort freqArr by freq desc, then num desc
+    for (let i = 0; i < freqArr.length - 1; i++) {
+        for (let j = i + 1; j < freqArr.length; j++) {
+            // Compare freq first, then value
+            if (
+                freqArr[j][1] > freqArr[i][1] ||
+                (freqArr[j][1] === freqArr[i][1] && freqArr[j][0] > freqArr[i][0])
+            ) {
+                // Swap
+                const temp = freqArr[i];
+                freqArr[i] = freqArr[j];
+                freqArr[j] = temp;
+            }
+        }
+    }
+
+    // Step 4: Collect top k
+    const result = [];
+    for (let i = 0; i < k && i < freqArr.length; i++) {
+        result.push(freqArr[i][0]);
+    }
+
+    return result;
+}
+    </script>
+
+</body>
+</html>

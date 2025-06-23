@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selection Sort</title>
+</head>
+<body>
+<script>
+    class Main{
+        main(arr){
+
+            this.selection(arr);
+            return arr;
+        }
+        selection(arr){
+            const n = arr.length;
+            for (let i = 0; i <=  n - 2; i++){
+                let mini = i;
+                for (let j = i; j <= n-1; j++){
+                    if (arr[j] < arr[mini]){
+                        mini = j;
+                    }
+                }
+                this.swap(arr,mini,i);
+            }
+        }
+
+        swap(arr, start, end){
+            let temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+        }
+    }
+
+
+    const run = new Main();
+
+    const arr = [13,100,46,24,52,20,9]
+    const ans = run.main(arr)
+    console.log(ans);
+</script>
+</body>
+</html>

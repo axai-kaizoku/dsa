@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Merge Sort</title>
+</head>
+<body style="background-color: #ccc;">
+<h1>Merge Sort</h1>
+<script>
+    class Solution{
+        mergeSort(arr){
+            const start = 0;
+            const end = arr.length - 1;
+            this.mS(arr,start,end);
+        }
+        mS(arr,low,high){
+            if (low >= high){
+                return;
+            }
+            let mid = Math.floor((low + high) / 2);
+            this.mS(arr,low, mid);
+            this.mS(arr, mid+1, high);
+            this.merge(arr,low,mid,high);
+        }
+
+        merge(arr,low,mid,high){
+            const temp = [];
+            let left = low;
+            let right = mid+1;
+            while(left <= mid && right <= high){
+                if (arr[left] <= arr[right]){
+                    temp.push(arr[left]);
+                    left++;
+                } else {
+                    temp.push(arr[right]);
+                    right++;
+                }
+            }
+            while (left <= mid){
+                temp.push(arr[left]);
+                left++;
+            }
+            while (right <= high){
+                temp.push(arr[right]);
+                right++;
+            }
+            for (let i = low; i <= high; i++){
+                arr[i] = temp[i-low];
+            }
+        }
+    }
+
+    const main = new Solution();
+    const arr = [3,2,4,1,3];
+    const run = main.mergeSort(arr);
+    console.log(arr);
+</script>
+</body>
+</html>

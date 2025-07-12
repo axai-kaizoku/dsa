@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Insertion Sort</title>
+</head>
+<body>
+<h1>Insertion Sort</h1>
+<script>
+    class Main{
+        main(arr){
+            this.insertion(arr);
+            return arr;
+        }
+        insertion(arr){
+            const n = arr.length;
+            for (let i = 0; i <=  n - 1; i++){
+                let j = i;
+                while (j > 0 && arr[j-1] > arr[j]){
+                    this.swap(arr,j-1,j);
+                    j--;
+                }
+            }
+        }
+
+        swap(arr, start, end){
+            let temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+        }
+    }
+
+
+    const run = new Main();
+
+    const arr = [13,46,24,52,20,9]
+    const ans = run.main(arr)
+    console.log(ans);
+</script>
+</body>
+</html>

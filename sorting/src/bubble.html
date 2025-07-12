@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bubble sort</title>
+</head>
+<body>
+<h1>Bubble sort</h1>
+<script>
+<!--    const arr = [13,46,24,52,20,9];-->
+    const arr = [13,14,25,34,54,90];
+    const n = arr.length;
+    for (let i = n-1; i >= 1; i--){
+        let didSwap = 0;
+        for (let j = 0; j <= i-1; j++){
+            if (arr[j] > arr[j+1]){
+                swap(arr,j,j+1);
+                didSwap = 1;
+            }
+        }
+        if (didSwap === 0){
+            break;
+        }
+        console.log("running"+i);
+    }
+    console.log(arr);
+    function swap(arr,max,i){
+        const temp = arr[max];
+        arr[max] = arr[i];
+        arr[i] = temp;
+    }
+</script>
+</body>
+</html>
